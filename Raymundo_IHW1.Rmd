@@ -1,0 +1,32 @@
+---
+title: "Research Methods II HW1"
+output: html_document
+---
+
+
+```{r,echo=FALSE,warning=FALSE,message=FALSE}
+if(!require(sjPlot)){
+  install.packages("sjPlot")
+}
+
+library(sjPlot)
+```
+
+**Load data**
+```{r}
+HW1 <- read.csv("https://raw.githubusercontent.com/IsaacRaymundo/ResearchMethods-HW1/main/assignment1-research-methods.csv", sep = "")
+
+```
+**Run Regression and Store it**
+```{r}
+lm1 <- lm(calledback~EliteSchoolCandidate, data = HW1);summary(lm1)
+
+
+```
+
+**Make table**
+```{r}
+
+tab_model(lm1, title = "Table 1: Effect of Attending an Elite School on Job Call Backs" ,dv.labels = "Call Back",pred.labels = c("Intercept","Elite School Candidate"),collapse.se = T,show.stat = T,CSS = list(css.depvarhead = "no-italics;text-align: center;",css.thead= "no-italics;font-weight:normal;" ),string.pred = "Variable",string.ci= "95% CI",string.stat= "t(862)", file = "ResearchMethodsHW1Table.rtf")
+
+```
